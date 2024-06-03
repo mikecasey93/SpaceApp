@@ -16,7 +16,7 @@ class CapsuleListConverter @Inject constructor(
         data: GetCapsuleUseCase.Response
     ) : CapsuleListModel {
         return CapsuleListModel(
-            items = data.capsules?.map {
+            capsules = data.capsules?.map {
                 Capsule(
                     capsuleId = it?.capsuleId,
                     details = it?.details,

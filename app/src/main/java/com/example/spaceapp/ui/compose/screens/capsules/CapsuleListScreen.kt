@@ -75,7 +75,7 @@ fun CapsuleList(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(listModel.items) {capsule ->
+        items(listModel.capsules) {capsule ->
             CapsuleItem(capsule = capsule, onItemClick = onItemClick)
         }
     }

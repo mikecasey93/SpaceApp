@@ -5,7 +5,7 @@ import com.example.common.nav.NavRoutes
 
 
 data class CapsuleListModel(
-    val items: List<Capsule> = listOf()
+    val capsules: List<Capsule> = listOf()
 )
 
 data class Capsule(

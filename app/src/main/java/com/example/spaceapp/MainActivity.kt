@@ -96,7 +96,6 @@ fun SpaceApp(navController: NavHostController) {
             if (topState.value) {
                 TopAppBar(
                     title = { Text(barTitle) },
-                    //backgroundColor = MaterialTheme.colorScheme.primary,
                     navigationIcon = {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back")
