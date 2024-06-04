@@ -1,5 +1,7 @@
 package com.example.spaceapp.di.usecase.capsule
 
+import com.example.domain.repo.CapsuleRepository
+import com.example.domain.usecase.UseCase
 import com.example.domain.usecase.capsule.GetCapsuleByIdUseCase
 import com.example.domain.usecase.capsule.GetCapsuleUseCase
 import dagger.Module
@@ -13,8 +15,8 @@ class CapsuleUseCaseModule {
 
     @Provides
     fun provideGetCapsulesUseCase(
-        configuration: com.example.domain.usecase.UseCase.Configuration,
-        repository: com.example.domain.repo.CapsuleRepository
+        configuration: UseCase.Configuration,
+        repository: CapsuleRepository
     ): GetCapsuleUseCase = GetCapsuleUseCase(
         configuration,
         repository
@@ -22,8 +24,8 @@ class CapsuleUseCaseModule {
 
     @Provides
     fun GetCapsuleByIdUseCase(
-        configuration: com.example.domain.usecase.UseCase.Configuration,
-        repository: com.example.domain.repo.CapsuleRepository
+        configuration: UseCase.Configuration,
+        repository: CapsuleRepository
     ): GetCapsuleByIdUseCase = GetCapsuleByIdUseCase(
         configuration,
         repository

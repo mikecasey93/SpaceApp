@@ -37,4 +37,5 @@ class NetworkModule {
     @Provides
     fun provideCapsuleService(retrofit: Retrofit): SpaceAppEndPoints =
         retrofit.create(SpaceAppEndPoints::class.java)
+
 }
