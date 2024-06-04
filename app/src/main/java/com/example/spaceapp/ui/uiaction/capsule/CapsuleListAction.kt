@@ -2,9 +2,9 @@ package com.example.spaceapp.ui.uiaction.capsule
 
 import com.example.common.state.UiAction
 
-sealed class CapsuleListAction: UiAction {
+sealed class CapsuleListAction: com.example.common.state.UiAction {
 
-    data object Loading : CapsuleListAction()
+    data object Load : CapsuleListAction()
     data class CapsuleItemClick(
         val capsuleId: String?,
         val details: String?,

@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.example.common.nav.routes.CapsuleInput
 
 @Composable
-fun CapsuleDetailsScreen(capsuleInput: CapsuleInput) {
+fun CapsuleDetailsScreen(capsuleInput: com.example.common.nav.routes.CapsuleInput) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier

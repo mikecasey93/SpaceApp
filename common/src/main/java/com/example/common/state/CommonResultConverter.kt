@@ -2,6 +2,7 @@ package com.example.common.state
 
 import com.example.domain.entity.Result
 
+
 abstract class CommonResultConverter<T : Any, R : Any> {
 
     fun convert (result: Result<T>): UiState<R> {

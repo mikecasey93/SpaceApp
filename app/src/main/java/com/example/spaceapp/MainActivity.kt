@@ -43,7 +43,24 @@ import com.example.spaceapp.ui.compose.firebase.LoginScreen
 import com.example.spaceapp.ui.compose.firebase.signOut
 import com.example.spaceapp.ui.compose.home.HomeScreen
 import com.example.spaceapp.ui.compose.screens.capsules.CapsuleDetailsScreen
+import com.example.spaceapp.ui.compose.screens.capsules.CapsuleListScreen
 import com.example.spaceapp.ui.theme.SpaceAppTheme
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.common.nav.routes.HistoryNavRoutes
+import com.example.common.nav.routes.LaunchNavRoutes
+import com.example.common.nav.routes.MissionNavRoutes
+import com.example.common.nav.routes.RocketNavRoutes
+import com.example.common.nav.routes.ShipNavRoutes
+import com.example.spaceapp.ui.compose.screens.history.HistoryDetailsScreen
+import com.example.spaceapp.ui.compose.screens.history.HistoryListScreen
+import com.example.spaceapp.ui.compose.screens.launches.LaunchDetailsScreen
+import com.example.spaceapp.ui.compose.screens.launches.LaunchListScreen
+import com.example.spaceapp.ui.compose.screens.missions.MissionDetailsScreen
+import com.example.spaceapp.ui.compose.screens.missions.MissionListScreen
+import com.example.spaceapp.ui.compose.screens.rockets.RocketDetailsScreen
+import com.example.spaceapp.ui.compose.screens.rockets.RocketListScreen
+import com.example.spaceapp.ui.compose.screens.ships.ShipDetailsScreen
+import com.example.spaceapp.ui.compose.screens.ships.ShipListScreen
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -71,6 +88,16 @@ fun SpaceApp(navController: NavHostController) {
         when (currentRoute) {
             NavRoutes.ROUTE_CAPSULES -> "Capsules"
             NavRoutes.Capsule.route -> "Capsule Details"
+            NavRoutes.ROUTE_HISTORY -> "History"
+            NavRoutes.History.route -> "History Details"
+            NavRoutes.ROUTE_MISSIONS -> "Missions"
+            NavRoutes.Mission.route -> "Mission Details"
+            NavRoutes.ROUTE_ROCKETS -> "Rockets"
+            NavRoutes.Rocket.route -> "Rocket Details"
+            NavRoutes.ROUTE_LAUNCHES -> "Launches"
+            NavRoutes.Launch.route -> "Launch Details"
+            NavRoutes.ROUTE_SHIPS -> "Ships"
+            NavRoutes.Ship.route -> "Ship Details"
             else -> "Details"
         }
     }
@@ -121,11 +148,60 @@ fun SpaceApp(navController: NavHostController) {
             composable(NavRoutes.Home.route) {
                 HomeScreen(navController = navController)
             }
+            composable(NavRoutes.ROUTE_CAPSULES) {
+                CapsuleListScreen(viewModel = hiltViewModel(), navController = navController)
+            }
             composable(
                 route = NavRoutes.Capsule.route,
                 arguments = NavRoutes.Capsule.arguments
             ) {
                 CapsuleDetailsScreen(CapsuleNavRoute.Details.fromEntry(it))
+            }
+            composable(NavRoutes.ROUTE_HISTORY) {
+                HistoryListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.History.route,
+                arguments = NavRoutes.History.arguments
+            ) {
+                HistoryDetailsScreen(HistoryNavRoutes.Details.fromEntry(it))
+            }
+            composable(NavRoutes.ROUTE_MISSIONS) {
+                MissionListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Mission.route,
+                arguments = NavRoutes.Mission.arguments
+            ) {
+                MissionDetailsScreen(MissionNavRoutes.Details.fromEntry(it))
+            }
+            composable(NavRoutes.ROUTE_ROCKETS) {
+                RocketListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Rocket.route,
+                arguments = NavRoutes.Rocket.arguments
+            ) {
+                RocketDetailsScreen(RocketNavRoutes.Details.fromEntry(it))
+
+            }
+            composable(NavRoutes.ROUTE_LAUNCHES) {
+                LaunchListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Launch.route,
+                arguments = NavRoutes.Launch.arguments
+            ) {
+                LaunchDetailsScreen(LaunchNavRoutes.Details.fromEntry(it))
+            }
+            composable(NavRoutes.ROUTE_SHIPS) {
+                ShipListScreen(hiltViewModel(), navController = navController)
+            }
+            composable(
+                route = NavRoutes.Ship.route,
+                arguments = NavRoutes.Ship.arguments
+            ) {
+                ShipDetailsScreen(ShipNavRoutes.Details.fromEntry(it))
             }
         }
 

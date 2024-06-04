@@ -127,7 +127,13 @@ fun LoginScreen(navController: NavHostController) {
             LoginDialog(onDismiss = { showLoginDialog = false }, navController)
         }
         if (showSignUpDialog) {
-            SignUpDialog(onDismiss = { showSignUpDialog = false }, navController)
+            SignUpDialog(
+                onDismiss = { showSignUpDialog = false },
+                signUpSuccess = {
+                    showSignUpDialog = false
+                    showLoginDialog = true
+                }
+            )
         }
     }
 }
@@ -181,7 +187,7 @@ fun LoginDialog(onDismiss: () -> Unit, navController: NavHostController) {
 }
 
 @Composable
-fun SignUpDialog(onDismiss: () -> Unit, navController: NavHostController) {
+fun SignUpDialog(onDismiss: () -> Unit, signUpSuccess: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var verifyPassword by remember { mutableStateOf("") }
@@ -212,7 +218,10 @@ fun SignUpDialog(onDismiss: () -> Unit, navController: NavHostController) {
         },
         confirmButton = {
             OutlinedButton(
-                onClick = { signUp(email, password, verifyPassword, auth, context, navController) },
+                onClick = { signUp(email, password, verifyPassword, auth, context){
+                    signUpSuccess()
+                }
+                          },
                 modifier = Modifier
                     .width(100.dp)
                     .height(45.dp)

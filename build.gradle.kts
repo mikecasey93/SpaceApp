@@ -5,3 +5,8 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     id("com.google.dagger.hilt.android") version "2.51" apply false
 }
+buildscript {
+    dependencies {
+        classpath(libs.google.services)
+    }
+}

@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import com.example.common.state.CommonScreen
 import com.example.spaceapp.model.Capsule
 import com.example.spaceapp.model.CapsuleListModel
-import com.example.spaceapp.ui.compose.viewmodel.CapsuleListViewModel
+import com.example.spaceapp.ui.viewmodel.CapsuleListViewModel
 import com.example.spaceapp.ui.uiaction.capsule.CapsuleListAction
 import com.example.spaceapp.ui.uiaction.capsule.CapsuleListSingleEvent
 import kotlinx.coroutines.flow.collectLatest
@@ -33,7 +33,7 @@ fun CapsuleListScreen(
     navController: NavController
 ) {
     LaunchedEffect(Unit) {
-        viewModel.submitAction(CapsuleListAction.Loading)
+        viewModel.submitAction(CapsuleListAction.Load)
     }
 
     viewModel.uiStateFlow.collectAsState().value.let { state ->

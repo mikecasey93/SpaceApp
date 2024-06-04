@@ -15,7 +15,7 @@ fun isVerifiedUser(
     auth.signInWithEmailAndPassword(email, password)
         .addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                navController.navigate(NavRoutes.Capsule.route)
+                navController.navigate(NavRoutes.Home.route)
             }
             else {
                 Toast.makeText(context, "Authentication failed", Toast.LENGTH_SHORT).show()
@@ -32,7 +32,13 @@ fun checkStatus(auth: FirebaseAuth, navController: NavHostController) {
     }
 }
 
-fun signUp(email: String, password: String, confirmPassword: String, auth: FirebaseAuth, context: Context, navController: NavHostController) {
+fun signUp(email: String,
+           password: String,
+           confirmPassword: String,
+           auth: FirebaseAuth,
+           context: Context,
+           signUpSuccess: () -> Unit
+) {
     if (password != confirmPassword) {
         Toast.makeText(context, "Incorrect Password", Toast.LENGTH_SHORT).show()
         return
@@ -42,7 +48,7 @@ fun signUp(email: String, password: String, confirmPassword: String, auth: Fireb
         .addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
-                navController.navigate("home")
+                signUpSuccess()
             } else {
                 Toast.makeText(context, "Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
             }

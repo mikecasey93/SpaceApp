@@ -4,9 +4,9 @@ package com.example.common.state
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.Text
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Snackbar
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +22,7 @@ fun <T : Any> CommonScreen(
         }
 
         is UiState.Error -> {
-            Error(state.errorMessage)
+            ErrorMessage(state.errorMessage)
         }
 
         is UiState.Success -> {
@@ -32,13 +32,14 @@ fun <T : Any> CommonScreen(
 }
 
 @Composable
-fun Error(errorMessage: String) {
+fun ErrorMessage(errorMsg: String) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Bottom
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Snackbar {
-            Text(text = errorMessage)
+            Text(text = errorMsg)
         }
     }
 }

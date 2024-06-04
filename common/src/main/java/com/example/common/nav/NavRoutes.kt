@@ -5,6 +5,11 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.example.common.nav.routes.CapsuleNavRoute
+import com.example.common.nav.routes.HistoryNavRoutes
+import com.example.common.nav.routes.LaunchNavRoutes
+import com.example.common.nav.routes.MissionNavRoutes
+import com.example.common.nav.routes.RocketNavRoutes
+import com.example.common.nav.routes.ShipNavRoutes
 
 
 sealed class NavRoutes(
@@ -13,15 +18,20 @@ sealed class NavRoutes(
 ) {
     data object Home : NavRoutes(ROUTE_HOME)
     object Capsule : NavRoutes(CapsuleNavRoute.Details.route, CapsuleNavRoute.Details.arguments)
+    object History : NavRoutes(HistoryNavRoutes.Details.route, HistoryNavRoutes.Details.arguments)
+    object Launch : NavRoutes(LaunchNavRoutes.Details.route, LaunchNavRoutes.Details.arguments)
+    object Mission : NavRoutes(MissionNavRoutes.Details.route, MissionNavRoutes.Details.arguments)
+    object Rocket : NavRoutes(RocketNavRoutes.Details.route, RocketNavRoutes.Details.arguments)
+    object Ship : NavRoutes(ShipNavRoutes.Details.route, ShipNavRoutes.Details.arguments)
 
 
     companion object {
         const val ROUTE_AUTH = "auth"
         const val ROUTE_HOME = "home"
+        const val ROUTE_MISSIONS = "missions"
         const val ROUTE_CAPSULES = "capsules"
         const val ROUTE_HISTORY = "history"
         const val ROUTE_LAUNCHES = "launches"
-        const val ROUTE_MISSIONS = "missions"
         const val ROUTE_ROCKETS = "rockets"
         const val ROUTE_SHIPS = "ships"
     }

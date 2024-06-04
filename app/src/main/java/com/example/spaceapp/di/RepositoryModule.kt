@@ -1,7 +1,7 @@
 package com.example.spaceapp.di
 
-import com.example.data.repo.CapsuleRepositoryImpl
-import com.example.data.repo.remote.RemoteCapsuleDataSource
+import com.example.data.remote.repo.capsule.CapsuleRepositoryImpl
+import com.example.data.remote.repo.capsule.RemoteCapsuleDataSource
 import com.example.domain.repo.CapsuleRepository
 import dagger.Module
 import dagger.Provides

@@ -1,7 +1,6 @@
 package com.example.data.remote.di
 
-import com.example.data.local.db.capsule.CapsuleApiDetail
-import com.example.data.remote.network.capsule.CapsuleService
+import com.example.data.remote.endpoints.SpaceAppEndPoints
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,12 +29,12 @@ class NetworkModule {
 
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(CapsuleApiDetail.BASE_URL)
+        .baseUrl("https://api.spacexdata.com/v3/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
     @Provides
-    fun provideCapsuleService(retrofit: Retrofit): CapsuleService =
-        retrofit.create(CapsuleService::class.java)
+    fun provideCapsuleService(retrofit: Retrofit): SpaceAppEndPoints =
+        retrofit.create(SpaceAppEndPoints::class.java)
 }

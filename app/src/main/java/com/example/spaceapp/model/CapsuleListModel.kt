@@ -1,8 +1,5 @@
 package com.example.spaceapp.model
 
-import android.telecom.Call.Details
-import com.example.common.nav.NavRoutes
-
 
 data class CapsuleListModel(
     val capsules: List<Capsule> = listOf()

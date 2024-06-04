@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -49,6 +50,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -61,11 +65,13 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.junit.ktx)
     implementation(project(":common"))
     implementation(project(":domain"))
     implementation(project(":data"))
-    implementation(libs.androidx.navigation.runtime.ktx)
     testImplementation(libs.junit)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
@@ -76,32 +82,36 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+
 
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.51.1")
 
+    implementation ("androidx.compose.material:material:1.4.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-//    implementation ("androidx.compose.material:material:1.4.2")
-//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-//
-//    implementation("io.coil-kt:coil-compose:2.6.0")
-//
-//    testImplementation ("junit:junit:4.13.2")
-//    testImplementation ("org.mockito:mockito-core:3.11.2")
-//    testImplementation ("org.mockito:mockito-inline:3.11.2")
-//    testImplementation ("androidx.arch.core:core-testing:2.1.0")
-//
-//    testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
-//
-//    testImplementation ("org.robolectric:robolectric:4.7.3")
-//    // Coroutines Test
-//    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
-//
-//    // Core Testing for InstantTaskExecutorRule
-//    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.6")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6")
+
+    testImplementation ("junit:junit:4.13.2")
+    testImplementation ("org.mockito:mockito-core:3.11.2")
+    testImplementation ("org.mockito:mockito-inline:3.11.2")
+    testImplementation ("androidx.arch.core:core-testing:2.1.0")
+
+    testImplementation ("org.mockito.kotlin:mockito-kotlin:3.2.0")
+
+    testImplementation ("org.robolectric:robolectric:4.7.3")
+    // Coroutines Test
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+
+    // Core Testing for InstantTaskExecutorRule
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+
 
 
 }
